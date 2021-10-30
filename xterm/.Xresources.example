@@ -1,0 +1,46 @@
+xterm.termName: xterm-256color
+
+## Copy and Paste
+XTerm.vt100.selectToClipboard: true
+
+## Keyboard shortcuts
+xterm*VT100.Translations: #override \
+		Ctrl Shift <key>V:	insert-selection(CLIPBOARD) \n\
+		Ctrl Shift <key>C:	copy-selection(CLIPBOARD) \n\
+		Ctrl <KeyPress> KP_Add: larger-vt-font() \n\
+		Ctrl <KeyPress> KP_Subtract: smaller-vt-font() \n\
+		
+
+## Scrolling
+XTerm.vt100.saveLines: 4096
+XTerm.vt100.scrollbar: false
+XTerm*Scrollkey: true
+
+## Font
+XTerm.vt100.faceName:MesloLGS NF:size=13:antialias=true
+
+## UTF-8
+XTerm*utf8: true
+XTerm*locale: utf8
+XTerm*inputMethod: ibus
+
+## Colors-tomorrow.dark
+XTerm.vt100.foreground:#c5c8c6
+XTerm.vt100.background:#1d1f21
+XTerm.vt100.color0:#1d1f21
+XTerm.vt100.color1:#cc6666
+XTerm.vt100.color2:#b5bd68
+XTerm.vt100.color3:#f0c674
+XTerm.vt100.color4:#81a2be
+XTerm.vt100.color5:#b294bb
+XTerm.vt100.color6:#8abeb7
+XTerm.vt100.color7:#c5c8c6
+XTerm.vt100.color8:#969896
+XTerm.vt100.color9:#cc6666
+XTerm.vt100.color10:#b5bd68
+XTerm.vt100.color11:#f0c674
+XTerm.vt100.color12:#81a2be
+XTerm.vt100.color13:#b294bb
+XTerm.vt100.color14:#8abeb7
+XTerm.vt100.color15:#ffffff
+
