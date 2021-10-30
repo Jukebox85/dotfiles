@@ -35,7 +35,7 @@ from libqtile.widget import backlight
 mod = "mod4"
 alt = "mod1"
 terminal = "xterm"
-browser = "firefox"
+browser = "google-chrome-stable"
 
 keys = [
     # Switch between windows
