@@ -87,6 +87,7 @@ keys = [
     Key([mod], "d", lazy.spawn("dmenu_run"), desc="open dmenu"),
     Key([mod], "F2", lazy.spawn(browser), desc="open chrome"),
     Key(['control', alt], "t", lazy.spawn("xterm"), desc="Launch terminal"),
+    Key([mod], "F3", lazy.spawn("thunar"), desc='open thunar'),
 
     # Screen
     Key([], "XF86MonBrightnessUp" , lazy.spawn("brightnessctl -s set +10%")),
