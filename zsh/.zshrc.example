@@ -116,6 +116,13 @@ alias update='sudo pacman -Syu'
 
 # git
 alias clone='git clone'
+alias commit='git commit -m'
+alias add='git add'
+alias push='git push origin main'
+# git copy dotfiles
+alias cpconfig="cp ~/.config/qtile/config.py ~/git/personal_project/dotfiles/qtile/config.py.example"
+alias cpaush="cp ~/.config/qtile/autostart.sh ~/git/personal_project/dotfiles/qtile/autostart.sh.example"
+alias cprc="cp ~/.zshrc ~/git/personal_project/dotfiles/zsh/.zshrc.example"
 
 # confirm before overwriting something
 alias cp="cp -i"
@@ -135,6 +142,13 @@ alias jour="journalctl -p 3 -xb"
 # xresources
 alias xr="vim ~/.Xresources"
 alias xrdb="xrdb -merge ~/.Xresources"
+
+# mirrorlist
+alias reflector="sudo reflector --country 'South Korea' --save /etc/pacman.d/mirrorlist"
+
+# croc
+alias send="croc send --code qazw1234"
+
 
 ##################################
 ######		  zshrc 		######
