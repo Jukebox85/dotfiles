@@ -1,0 +1,116 @@
+set autoindent
+set cindent
+set smartindent
+set number
+set showcmd
+set cursorline
+set clipboard=unnamedplus
+set hlsearch
+set nu
+set history=256
+set ts=4
+set sts=4
+set shiftwidth=4
+set laststatus=2
+set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F\
+set showmatch
+set smartcase
+set smarttab
+set ruler
+
+"syntax highlighting
+if has("syntax")
+	syntax on
+endif
+
+
+au BufReadPost *
+	  \ if line("'\"") > 0 && line("'\"") <= line("$") |
+	  \ exe "norm g`\"" |
+	  \ endif
+
+colorscheme jellybeans
+
+"Copy to clipboard
+vnoremap<C-c> "+y
+
+"Plugin
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin('~/.vim/plugged')
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'nvie/vim-flake8'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+call vundle#end()
+filetype plugin indent on
+
+let g:SimplylFold_docstring_preview = 1
+let python_highlight_all=1
+
+"split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+
+"press F5 to comment all selected line, and Shift+F5 to uncomment
+let s:comment_map = { 
+    \   "c": '\/\/',
+    \   "cpp": '\/\/',
+    \   "go": '\/\/',
+    \   "java": '\/\/',
+    \   "javascript": '\/\/',
+    \   "lua": '--',
+    \   "scala": '\/\/',
+    \   "php": '\/\/',
+    \   "python": '#',
+    \   "ruby": '#',
+    \   "rust": '\/\/',
+    \   "sh": '#',
+    \   "desktop": '#',
+    \   "fstab": '#',
+    \   "conf": '#',
+    \   "profile": '#',
+    \   "bashrc": '#',
+    \   "bash_profile": '#',
+    \   "mail": '>',
+    \   "eml": '>',
+    \   "bat": 'REM',
+    \   "ahk": ';',
+    \   "vim": '"',
+    \   "tex": '%',
+    \ }
+
+function! ToggleComment()
+    if has_key(s:comment_map, &filetype)
+        let comment_leader = s:comment_map[&filetype]
+        if getline('.') =~ "^\\s*" . comment_leader . " " 
+            " Uncomment the line
+            execute "silent s/^\\(\\s*\\)" . comment_leader . " /\\1/"
+        else 
+            if getline('.') =~ "^\\s*" . comment_leader
+                " Uncomment the line
+                execute "silent s/^\\(\\s*\\)" . comment_leader . "/\\1/"
+            else
+                " Comment the line
+                execute "silent s/^\\(\\s*\\)/\\1" . comment_leader . " /"
+            end
+        end
+    else
+        echo "No comment leader found for filetype"
+    end
+endfunction
+
+nnoremap <F5> :call ToggleComment()<cr>
+vnoremap <F5> :call ToggleComment()<cr>
+
+" compile c with F8
+map <F8> :!gcc % -o %< && ./%< <CR>
