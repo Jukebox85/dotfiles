@@ -36,6 +36,7 @@ mod = "mod4"
 alt = "mod1"
 terminal = "xterm"
 browser = "google-chrome-stable"
+fileman = "thunar"
 
 keys = [
     # Switch between windows
@@ -85,9 +86,9 @@ keys = [
 
     # Application
     Key([mod], "d", lazy.spawn("dmenu_run"), desc="open dmenu"),
-    Key([mod], "F2", lazy.spawn(browser), desc="open chrome"),
+    Key([mod], "F2", lazy.spawn(browser), desc="open browser"),
     Key(['control', alt], "t", lazy.spawn("xterm"), desc="Launch terminal"),
-    Key([mod], "F3", lazy.spawn("thunar"), desc='open thunar'),
+    Key([mod], "F3", lazy.spawn(fileman), desc='open file manager'),
 
     # Screen
     Key([], "XF86MonBrightnessUp" , lazy.spawn("brightnessctl -s set +10%")),
