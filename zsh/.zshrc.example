@@ -112,22 +112,17 @@ alias ls='ls -a --color=tty'
 alias grep='grep --color=auto'
 alias c='clear'
 alias off='poweroff'
-alias update='sudo pacman -Syu'
+alias update='yay -Syu'
 
 # git
 alias clone='git clone'
 alias commit='git commit -m'
 alias add='git add'
-alias push='git push origin main'
+alias push='git push origin master'
 # git copy dotfiles
 alias cpconfig="cp ~/.config/qtile/config.py ~/git/personal_project/dotfiles/qtile/config.py.example"
 alias cpaush="cp ~/.config/qtile/autostart.sh ~/git/personal_project/dotfiles/qtile/autostart.sh.example"
 alias cprc="cp ~/.zshrc ~/git/personal_project/dotfiles/zsh/.zshrc.example"
-
-# confirm before overwriting something
-alias cp="cp -i"
-alias mv="mv -i"
-alias rm="rm -i"
 
 # cleanup caches and orphans
 alias rcache='sudo pacman -Sc; sudo pacman -Qtdq | sudo pacman -Rns -'
