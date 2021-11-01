@@ -165,7 +165,8 @@ screens = [
                     name_transform=lambda name: name.upper(),
                 ),
                 widget.Wlan(
-                    background='5a3e58',
+                    background='89809a',
+                    foreground='000000',
                     format=' {essid} ',
                 ),
                 widget.Battery(
@@ -174,12 +175,16 @@ screens = [
                     charge_char='Charging',
                     discharge_char='Not charging',
                     empty_char='EMPTY',
-                    format='{percent:2.0%} {hour:d}:{min:02d} left: {char}',
+                    format='{percent:2.0%}: {char}',
                     notify_below=0.2,
                     show_short_text=False,
                     update_interval=30
                 ),
-                widget.Clock(format='%Y-%m-%d %a %H:%M'),
+                widget.Clock(
+                    format='%Y-%m-%d %a %H:%M',
+                    background='42869a',
+                    foreground='000000',
+                ),
                 widget.Systray(),
             ],
             24,
