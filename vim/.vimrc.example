@@ -61,7 +61,7 @@ nnoremap <C-H> <C-W><C-H>
 autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 
-"press F5 to comment all selected line, and Shift+F5 to uncomment
+"press F5 to comment/uncomment all selected line
 let s:comment_map = { 
     \   "c": '\/\/',
     \   "cpp": '\/\/',
