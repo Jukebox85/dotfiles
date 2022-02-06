@@ -45,7 +45,8 @@ esac
 
 use_color=true
 
-alias cp="cp -i"                          # confirm before overwriting something
+alias cp="cp -iv"                          # confirm before overwriting something
+alias mv="mv -iv"
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 alias more=less
@@ -71,6 +72,9 @@ alias clone='git clone'
 alias push='git push origin'
 alias pull='git pull'
 alias push='git add .; git commit -m "Add via upload"; git push origin'
+
+#usbreset
+alias resetcon='sudo ~/git/usbreset/usbreset /dev/bus/usb/003/005';
 
 xhost +local:root > /dev/null 2>&1
 
