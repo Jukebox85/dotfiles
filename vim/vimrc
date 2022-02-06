@@ -1,12 +1,11 @@
 set autoindent
 set cindent
 set smartindent
-set number
-set showcmd
+set number "줄 번호 표기
 set cursorline
 set clipboard=unnamedplus
 set hlsearch
-set nu
+set autowrite
 set history=256
 set ts=4
 set sts=4
@@ -17,6 +16,10 @@ set showmatch
 set smartcase
 set smarttab
 set ruler
+set encoding=utf-8
+set fileencodings=utf-8,cp949
+set wildmenu "Tab 자동완성
+
 
 "syntax highlighting
 if has("syntax")
@@ -40,16 +43,20 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin('~/.vim/plugged')
 Plugin 'gmarik/Vundle.vim'
-Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+Plugin 'davidhalter/jedi-vim'
+let g:jedi#show_call_signatures=0
+let g:jedi#popup_select_first="0"
+let g:jedi#force_py_version=3
+
 call vundle#end()
 filetype plugin indent on
 
-let g:SimplylFold_docstring_preview = 1
 let python_highlight_all=1
 
 "split navigations
@@ -61,7 +68,7 @@ nnoremap <C-H> <C-W><C-H>
 autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 
-"press F5 to comment/uncomment all selected line
+"press F5 to comment all selected line, and Shift+F5 to uncomment
 let s:comment_map = { 
     \   "c": '\/\/',
     \   "cpp": '\/\/',
@@ -109,8 +116,12 @@ function! ToggleComment()
     end
 endfunction
 
+
 nnoremap <F5> :call ToggleComment()<cr>
 vnoremap <F5> :call ToggleComment()<cr>
 
 " compile c with F8
 map <F8> :!gcc % -o %< && ./%< <CR>
+
+" execute python with f2 + Enter
+au Filetype python map <f2> : !python3 %
